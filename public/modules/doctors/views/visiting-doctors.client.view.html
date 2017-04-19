@@ -1,0 +1,17 @@
+<section class="page" data-ng-controller="DoctorsController" data-ng-init="getVisiting()">
+
+
+  <div class="controls">
+    <input class="form-control" g-places-autocomplete ng-model="searchVisit" placeholder="Search Location"/>
+    <small>{{searchVisit.geometry.location.lng() | limitTo : 9}},{{searchVisit.geometry.location.lat()| limitTo : 9}}</small>
+    <br/>
+  </div>
+
+  <div class="panel mini-box">
+    <div class="panel-body">
+        <map zoom="13" center="42.360082,-71.05888">
+          <marker ng-repeat="doctor in visitingDoctor" position="{{doctor.location[1]}}, {{doctor.location[0]}}" on-click="showInfoWindowz(event, doctor)"></marker>
+        </map>
+    </div>
+  </div>
+</section>

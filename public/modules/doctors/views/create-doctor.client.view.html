@@ -1,0 +1,141 @@
+<section class="page" data-ng-controller="DoctorsController">
+    <div class="page-header">
+        <h1>Doctor Profile</h1>
+      <small>Please fill up your Profile first to get started </small>
+    </div>
+
+  <div  id="crete-doc" class="panel panel-default mb20 mini-box panel-hovered col-md-12">
+      <form class="form-horizontal" style="margin-top:30px;" data-ng-submit="create()" novalidate>
+        <div id ="create-doc-right" class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+<div>
+          <div id="doctor-profilepic" class="text-center">
+              <img ng-src="{{profilePic}}" class="avatar img-thumbnail" alt="avatar" height="250" width="250">
+              <h6><i>Profile Picture</i></h6>
+              <div>
+                Choose File:
+                <div class="btn btn-primary" ngf-select ng-model="files" ngf-multiple="true" ngf-pattern="image/*" accept="image/*">Upload Image</div>
+              </div>
+            <br/>
+            <div ng-repeat="file in files">
+              <div class="progress">
+                <div class="progress-bar" role="progressbar" style="width:{{file.progress}}%;">
+                  {{file.name}} : {{file.progress}}
+                </div>
+              </div>
+              <button class="btn btn-ttc" type="button" ng-click="abort($index)" ng-show="file.progress != 100">Abort</button>
+            </div>
+
+
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="name">Name: </label>
+            Dr. <span data-ng-bind="name | capitalize"></span>
+            <div class="controls">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="name">Email: </label>
+             <span data-ng-bind="email"></span>
+            <div class="controls">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="description">Description</label>
+            <div class="controls">
+              <textarea data-ng-model="description"  rows="4" id="description" class="form-control marg_less" placeholder="Introduce Yourself" required ng-trim="false" maxlength="1500"></textarea>
+            </div>
+          </div>
+
+
+</div>
+        </div>
+
+        <div id="create-doc-left" class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+          <div class="form-group">
+            <label class="control-label" for="qualification">Are you Available to visit Patients?</label>
+            <div class="controls">
+              <md-radio-group data-ng-model="homeVisit">
+                <div layout="row">
+                  <div flex>
+                    <md-radio-button data-ng-value="true" class="md-primary"> Yes, I shall visit Patients </md-radio-button>
+                  </div>
+                  <div flex>
+                    <md-radio-button data-ng-value="false">No, just Video-Consulting</md-radio-button>
+                  </div>
+                </div>
+              </md-radio-group>
+            </div>
+          </div>
+
+          <div class="well form-group" ng-show="homeVisit">
+            <label class="control-label" for="qualification">Kindly mention the locality where prefer visiting Patients:</label>
+            <div class="controls">
+              <input class="form-control" g-places-autocomplete ng-model="place" placeholder="Location"/>
+              <small>{{place.geometry.location.lng() | limitTo : 9}},{{place.geometry.location.lat()| limitTo : 9}}
+              willing to visit Patients around 20 miles from this position</small>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="speciality">Speciality</label>
+            <div class="controls">
+              <select data-ng-model="speciality" id="speciality" class="form-control marg_less" required>
+                <option value="Orthopedic">CARDIOLOGIST</option>
+                <option value="Orthopedic">DENTIST</option>
+                <option value="Orthopedic">NEUROLOGIST</option>
+                <option value="Orthopedic">ORTHOPADIC</option>
+                <option value="Orthopedic">PHYSIOLOGIST</option>
+                <option value="Orthopedic">PHYSIAN</option>
+                <option value="Orthopedic">SURGEON</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="qualification">Qualification</label>
+            <div class="controls" data-ng-init="qualification=['']">
+              <input style="margin-bottom: 15px;" type="text" ng-repeat="q in qualification track by $index" data-ng-model="qualification[$index]" id="qualification" class="form-control marg_less" placeholder="Qualification {{$index+1}}" required>
+              <a href="javascript:;" data-ng-click="qualification.push('');">Add More</a>
+            </div>
+          </div>
+          <!--<div class="form-group">-->
+            <!--<label class="control-label" for="availability">Availability</label>-->
+            <!--<div class="controls">-->
+              <!--<input type="text" data-ng-model="availability" id="availability" class="form-control marg_less" placeholder="Availability" required>-->
+            <!--</div>-->
+          <!--</div>-->
+          <div class="form-group">
+            <label class="control-label" for="timeZone">Time Zone</label>
+            <div class="controls">
+              <select data-ng-model="timeZone" id="timeZone" class="form-control marg_less">
+                <option  ng-selected="timeZone == value" value="{{value}}" ng-repeat="(key, value) in timeZoneArray">{{key}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label" for="links">Links</label>
+            <div class="controls">
+              <input type="text" data-ng-model="links" id="links" class="form-control marg_less" placeholder="Links" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" class="btn btn-success pull-right" value="Create">
+          </div>
+
+          <div data-ng-show="error" class="text-danger">
+            <strong data-ng-bind="error"></strong>
+          </div>
+        </div>
+      </form>
+
+
+
+
+    </div>
+
+</section>

@@ -1,0 +1,27 @@
+#crete-doc{
+    border-color: #ccc;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);
+    padding-bottom: 25px;
+}
+
+#create-doc-right{
+    padding-left: 50px;
+    padding-right: 100px;
+    border-right: solid 2px #d3d3d3;
+}
+#create-doc-left{
+    padding-left: 100px;
+}
+
+.docprofile .thumbnail{
+    padding-bottom:32px ;
+}
+
+.docprofile img{
+    width: 100%;
+    max-height: 250px;
+
+}
+

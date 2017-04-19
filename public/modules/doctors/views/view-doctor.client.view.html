@@ -1,0 +1,26 @@
+<section class="page" data-ng-controller="DoctorsController" data-ng-init="findOne()">
+  <div class="page-header">
+    <h3 data-ng-bind="doctor.name"></h3>
+  </div>
+  <small>
+    <em class="text-muted">
+      Doctor's Profile
+    </em>
+  </small>
+
+<div class="row md-padding">
+  <div class="col-md-6">
+    <p> <img src="modules/doctors/img/doctor.png"></p>
+    <p> <b>Name:</b> <i data-ng-bind="doctor.name"></i></p>
+    <p> <b>Qualification:</b> <i data-ng-bind="doctor.qualification"></i></p>
+    <p> <b>Description:</b> <i data-ng-bind="doctor.description"></i></p>
+  </div>
+
+  <div class="col-md-6">
+    <p> <b>email:</b> <i data-ng-bind="doctor.email"></i></p>
+    <p> <b>links:</b> <i data-ng-bind="doctor.links"></i></p>
+    <p> <b>Registered on:</b> <i data-ng-bind="doctor.created"></i></p>
+     <button class="btn-primary">Connect with Doctor</button>
+    </div>
+  </div>
+</section>

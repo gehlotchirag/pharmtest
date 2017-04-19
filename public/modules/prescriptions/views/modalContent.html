@@ -1,0 +1,43 @@
+
+<div class="modal-style">
+	<!-- wrapper for specific style -->
+	<div class="modal-header clearfix">
+		<h4 class="modal-title">Share your Prescription</h4>
+		<span class="close ion ion-android-close" ng-click="modalClose()"></span>
+	</div>
+
+	<div class="modal-body" ng-init="findDocNPharma()">
+		<p>Shareing  Prescription ID: <u> {{prescription._id}} </u></p>
+		<table class="table ng-scope table-bordered">
+			<thead>
+			<tr>
+ 				<th>Doctors</th>
+				<th>Pharmacy</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="doctor in doctors">
+				<td >
+					<div class="ui-checkbox ui-checkbox-primary ml5">
+						<label><input type="checkbox" ng-model="DoctorToggle" ng-click="amendUser(doctor,DoctorToggle)"><span>{{doctor.name}}</span>
+						</label>
+					</div>
+ 				</td>
+ 				<td >
+					<div class="ui-checkbox ui-checkbox-primary ml5" ng-show="pharmacies[$index].name">
+						<label><input type="checkbox" ng-model="phamacyToggle" ng-click="amendUser(pharmacy,phamacyToggle)"><span>{{pharmacies[$index].name}}</span>
+						</label>
+					</div>
+ 				</td>
+			</tr>
+			</tbody>
+		</table>
+ 			<div class="row form-group">
+				<div class="col-sm-12 text-right">
+					<button class="btn btn-success" ng-click="sendInvite(prescription)">Send Invite</button>
+				</div>
+			</div>
+	</div>
+</div>
+
+<!-- #end Modal Content -->

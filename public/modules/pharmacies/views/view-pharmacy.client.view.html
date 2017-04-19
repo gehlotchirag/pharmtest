@@ -1,0 +1,22 @@
+<section class="page" data-ng-controller="PharmaciesController" data-ng-init="findOne()">
+	<div class="page-header">
+ 		<h1 data-ng-bind="pharmacy.name"></h1>
+		<h4 data-ng-bind="pharmacy.address"></h4>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == pharmacy.user._id))">
+		<a class="btn btn-primary" href="/#!/pharmacies/{{pharmacy._id}}/edit">
+			<i class="ion ion-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="ion ion-trash-b"></i>
+		</a>
+	</div>
+	<small>
+		<em class="text-muted">
+			Created on
+			<span data-ng-bind="pharmacy.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="pharmacy.user.displayName"></span>
+		</em>
+	</small>
+</section>

@@ -1,0 +1,36 @@
+<section class="page" data-ng-controller="DoctorsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Doctor Panel</h1>
+    </div>
+    <div class="list-group">
+
+      <div class="col-xs-12 col-md-3 col-sm-4" data-ng-repeat="doctor in doctors">
+        <div class="panel panel-default mb20 mini-box panel-hovered">
+          <div class="panel-body">
+            <div class="clearfix">
+              <img ng-src={{doctor.profilePic}} alt="..." height="100%" width="100%">
+              <br/>
+              <div class="info left">
+                <!--<h5 class="text-dark mb0">Doctors Available</h5>-->
+                <!--<h4 class="mt0 text-success text-bold">50</h4>-->
+                <div class="caption">
+                  <h4 data-ng-bind="doctor.name | limitTo : 15"></h4>
+                  <small data-ng-bind="doctor.qualification" class="text-muted"></small> |
+                  <small data-ng-bind="doctor.speciality" class="text-muted text-capitalize"></small>
+                  <p data-ng-bind="doctor.description | limitTo : 45"></p>
+                </div>
+              </div>
+              <a data-ng-href="#!/doctors/{{doctor._id}}" class="btn btn-success pull-right">View Details</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="alert alert-warning text-center" data-ng-hide="!doctors.$resolved || doctors.length">
+    	No Doctors yet, why don't you <a href="/#!/doctors/create">create one</a>?
+    </div>
+
+</section>
